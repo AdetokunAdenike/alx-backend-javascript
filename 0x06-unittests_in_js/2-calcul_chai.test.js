@@ -38,7 +38,7 @@ describe('calculateNumber', () => {
 
   describe('Invalid operation', () => {
     it('should throw an error for invalid operation type', () => {
-      expect(() => calculateNumber('INVALID', 1.4, 4.5)).to.throw();
+      expect(() => calculateNumber('INVALID', 1.4, 4.5)).to.throw(Error, 'Invalid operation type: INVALID');
     });
-  });
+  });  
 });

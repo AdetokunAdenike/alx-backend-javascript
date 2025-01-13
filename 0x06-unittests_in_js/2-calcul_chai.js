@@ -1,14 +1,21 @@
-const calculateNumber = (type, a, b) => {
+function calculateNumber(type, a, b) {
+  const roundedA = Math.round(a);
+  const roundedB = Math.round(b);
+
   if (type === 'SUM') {
-    return Math.round(a) + Math.round(b);
+    return roundedA + roundedB;
   }
   if (type === 'SUBTRACT') {
-    return Math.round(a) - Math.round(b);
+    return roundedA - roundedB;
   }
   if (type === 'DIVIDE') {
-    return Math.round(b) === 0 ? 'Error' : Math.round(a) / Math.round(b);
+    if (roundedB === 0) {
+      return 'Error';
+    }
+    return roundedA / roundedB;
   }
-  return 0;
-};
+
+  throw new Error(`Invalid operation type: ${type}`);
+}
 
 module.exports = calculateNumber;
