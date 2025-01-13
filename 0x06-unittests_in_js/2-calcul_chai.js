@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 export default function calculateNumber(type, a, b) {
   const roundedA = Math.round(a);
   const roundedB = Math.round(b);
@@ -15,3 +16,4 @@ export default function calculateNumber(type, a, b) {
     throw new Error('Invalid operation type');
   }
 }
+
