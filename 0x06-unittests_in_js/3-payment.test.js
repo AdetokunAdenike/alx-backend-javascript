@@ -1,11 +1,10 @@
-import sinon from 'sinon';
-import { expect } from 'chai';
-import Utils from './utils.js';
-import sendPaymentRequestToApi from './3-payment.js';
+const sinon = require('sinon');
+const { expect } = require('chai');
+const Utils = require('./utils');
+const sendPaymentRequestToApi = require('./3-payment');
 
 describe('sendPaymentRequestToApi', () => {
   it('should call Utils.calculateNumber with correct arguments', () => {
-
     const calculateNumberSpy = sinon.spy(Utils, 'calculateNumber');
 
     sendPaymentRequestToApi(100, 20);
