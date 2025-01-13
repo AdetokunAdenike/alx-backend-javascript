@@ -1,17 +1,15 @@
-export default function calculateNumber(type, a, b) {
-  const roundedA = Math.round(a);
-  const roundedB = Math.round(b);
-
+#!/usr/bin/env node
+const calculateNumber = (type, a, b) => {
   if (type === 'SUM') {
-    return roundedA + roundedB;
-  } else if (type === 'SUBTRACT') {
-    return roundedA - roundedB;
-  } else if (type === 'DIVIDE') {
-    if (roundedB === 0) {
-      return 'Error';
-    }
-    return roundedA / roundedB;
-  } else {
-    throw new Error('Invalid operation type');
+    return Math.round(a) + Math.round(b);
   }
-}
+  if (type === 'SUBTRACT') {
+    return Math.round(a) - Math.round(b);
+  }
+  if (type === 'DIVIDE') {
+    return Math.round(b) === 0 ? 'Error' : Math.round(a) / Math.round(b);
+  }
+  return 0;
+};
+
+export default calculateNumber;
