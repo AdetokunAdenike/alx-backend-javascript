@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "0x06. Unittests in JS",
   "main": "0-calcul.js",
-  "type": "module",
   "scripts": {
     "test": "mocha"
   },
@@ -11,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "chai": "^5.1.2",
+    "chai": "^4.3.7",
     "mocha": "^11.0.1",
     "sinon": "^19.0.2"
   }
