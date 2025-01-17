@@ -1,31 +1,14 @@
-const readline = require('readline');
+console.log('Welcome to ALX, what is your name?');
 
-const r1 = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
+process.stdin.on('data', (data) => {
+  console.log(`Your name is: ${data.toString().trim()}`);
 });
 
-if (process.stdin.isTTY) {
-  r1.question('Welcome to Holberton School, what is your name?\n', (name) => {
-    console.log(`Your name is: ${name}`);
-    r1.close();
-  });
+process.stdin.on('end', () => {
+  console.log('This important software is now closing');
+});
 
-  r1.on('close', () => {
-  });
-} else {
-  let inputBuffer = '';
-
-  console.log('Welcome to Holberton School, what is your name?');
-
-  process.stdin.on('data', (data) => {
-    inputBuffer += data.toString();
-  });
-
-  process.stdin.on('end', () => {
-    const name = inputBuffer.trim();
-    console.log(`Your name is: ${name}`);
-    console.log('This important software is now closing');
-    process.exit(0);
-  });
+// Ensure the program ends in piped input scenarios
+if (!process.stdin.isTTY) {
+  process.stdin.resume(); // Start reading the piped input
 }
