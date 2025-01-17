@@ -1,11 +1,13 @@
 console.log('Welcome to Holberton School, what is your name?');
 
-process.stdin.on('data', (data) => {
-  console.log(`Your name is: ${data.toString().trim()}`);
+process.stdin.on('readable', () => {
+  const input = process.stdin.read();
+
+  if (input) {
+    console.log(`Your name is: ${input.toString().trim()}`);
+  }
 });
 
 process.stdin.on('end', () => {
-  if (!process.stdin.isTTY) {
-    console.log('This important software is now closing');
-  }
+  console.log('This important software is now closing');
 });
