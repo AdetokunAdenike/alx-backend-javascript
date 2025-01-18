@@ -1,11 +1,20 @@
 const http = require('http');
 
-const app = http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('Hello ALX!');
+const SERVER_PORT = 1245;
+const SERVER_HOST = 'localhost';
+const server = http.createServer();
+
+server.on('request', (_, response) => {
+  const message = 'Hello ALX!';
+
+  response.setHeader('Content-Type', 'text/plain');
+  response.setHeader('Content-Length', message.length);
+  response.statusCode = 200;
+  response.write(Buffer.from(message));
 });
 
-const PORT = 1245;
-app.listen(PORT);
+server.listen(SERVER_PORT, SERVER_HOST, () => {
+  process.stdout.write(`Server is live at -> http://${SERVER_HOST}:${SERVER_PORT}\n`);
+});
 
-module.exports = app;
+module.exports = server;
